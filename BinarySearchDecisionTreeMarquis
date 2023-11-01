@@ -1,0 +1,31 @@
+# Binary Search Decision Tree
+
+# Make Node class
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.left = None
+        self.right = None
+
+
+# Make Tree traverse method, right side terminates
+def decision_tree_traverse(node):
+    if node is not None:
+        answer = input(f"{node.data}")
+        if answer == "yes":
+            decision_tree_traverse(node.left)
+        else:
+            node = node.right
+    return node.data
+
+
+# Create decision tree - Should I take this course?
+root = Node("Do you have the prerequisites covered?")
+root.left = Node("Do you have the ability to take on the credits for the course?")
+root.right = Node("May want to wait until you have the correct prerequisites for the course")
+root.left.left = Node("Do you have the money to pay for the course?")
+root.left.right = Node("You should wait until you have room in your schedule to take the course")
+root.left.left.left = Node("You should take the course!")
+
+print("'Should you take the course' Decision tree")
+print(decision_tree_traverse(root))
